@@ -25,7 +25,7 @@ func NewService(cfg config.Config) *service {
 
 func (s *service) Run(ctx context.Context) error{
 	for {
-		conn, _ := net.Dial("tcp", "127.0.0.1:5101")
+		conn, _ := net.Dial("tcp", fmt.Sprintf("%v:%v", s.cfg.Server().Ip, s.cfg.Server().Port))
 
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Text to send: ")
